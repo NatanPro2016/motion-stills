@@ -43,11 +43,11 @@ ScrollTrigger.create({
   end: "bottom bottom",
   onUpdate: (self) => {
     const rotation = self.progress * 360;
-    const s = self.progress * 1 - 1;
-    console.log(s);
+    const s = Math.abs(self.progress * 1 - 1);
 
-    const scale = self.progress * 1 - 1 >= 0.5 ? self.progress * 1 - 1 : 0.5;
+    const scale = s >= 0.3 ? s : 0.3;
     gsap.to(".revealer", { rotation, scale });
+    console.log(s <= -0.5 ? s : 0.5);
   },
 });
 
